@@ -1,0 +1,1052 @@
+local PabloLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/BatuKvi123/PabloLibV3/main/PabloLibV3"))()
+local window = PabloLib:Create(
+"Projeto LKA I Zombie Attack 🇺🇸", -- Nome Menu
+"Enabled", --  Poder Mover Menu
+"p" -- PC Executador Fechar Web-Site
+)
+
+---Menus---
+
+local tab1 = window:CreateTab("Main - Farm")
+local tab2 = window:CreateTab("Player / Combat")
+local tab3 = window:CreateTab("Others")
+local tab4 = window:CreateTab("Credits Dev")
+local tab5 = window:CreateTab("warning !")
+local tab6 = window:CreateTab("Others Game Brazil")
+local tab7 = window:CreateTab("HELP Farm")
+local tab8 = window:CreateTab("Help Farm 2")
+local tab9 = window:CreateTab("Gun Shop")
+local tab10 = window:CreateTab("Box Shop")
+local tab11 = window:CreateTab("Gun Values")
+local tab12 = window:CreateTab("Close Gui")
+
+
+---Botãos---
+
+tab1:CreateButton("Auto Farm 1", function()
+print(value)
+local groundDistance = 18
+local Player = game:GetService("Players").LocalPlayer
+local function getNearest()
+local nearest, dist = nil, 99999
+for _,v in pairs(game.Workspace.BossFolder:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+for _,v in pairs(game.Workspace.enemies:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+return nearest
+end
+_G.farm2 = true
+Player.Chatted:Connect(function(m)
+if(m==";autofarm false")then
+_G.farm2 = false
+elseif(m==";autofarm true")then
+_G.farm2 = true
+end
+end)
+_G.globalTarget = nil
+game:GetService("RunService").RenderStepped:Connect(function()
+if(_G.farm2==true)then
+local target = getNearest()
+if(target~=nil)then
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, target.Head.Position)
+Player.Character.HumanoidRootPart.CFrame = (target.HumanoidRootPart.CFrame * CFrame.new(0, groundDistance, 9))
+_G.globalTarget = target
+end
+end
+end)
+spawn(function()
+while wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+game.Players.LocalPlayer.Character.Torso.Velocity = Vector3.new(0,0,0)
+end
+end)
+while wait() do
+if(_G.farm2==true and _G.globalTarget~=nil and _G.globalTarget:FindFirstChild("Head") and Player.Character:FindFirstChildOfClass("Tool"))then
+local target = _G.globalTarget
+game.ReplicatedStorage.Gun:FireServer({["Normal"] = Vector3.new(0, 0, 0), ["Direction"] = target.Head.Position, ["Name"] = Player.Character:FindFirstChildOfClass("Tool").Name, ["Hit"] = target.Head, ["Origin"] = target.Head.Position, ["Pos"] = target.Head.Position,})
+wait()
+end
+end
+end)
+
+tab1:CreateWarning("1 - Use the Gun to Farm")
+tab1:CreateWarning("2 - get the auto weapon menu below")
+tab1:CreateWarning("3 - then enter the name of the weapon")
+tab1:CreateWarning("Exemplo abaixo")
+tab1:CreateWarning("Pistol, Machine Gun, Uzi, Trench Shotgun")
+tab1:CreateWarning("And Press Active")
+
+tab1:CreateButton("Auto Farm 2", function()
+print(value)
+local groundDistance = 15
+local Player = game:GetService("Players").LocalPlayer
+local function getNearest()
+local nearest, dist = nil, 99999
+for _,v in pairs(game.Workspace.BossFolder:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+for _,v in pairs(game.Workspace.enemies:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+return nearest
+end
+_G.farm2 = true
+Player.Chatted:Connect(function(m)
+if(m==";autofarm false")then
+_G.farm2 = false
+elseif(m==";autofarm true")then
+_G.farm2 = true
+end
+end)
+_G.globalTarget = nil
+game:GetService("RunService").RenderStepped:Connect(function()
+if(_G.farm2==true)then
+local target = getNearest()
+if(target~=nil)then
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, target.Head.Position)
+Player.Character.HumanoidRootPart.CFrame = (target.HumanoidRootPart.CFrame * CFrame.new(0, groundDistance, 9))
+_G.globalTarget = target
+end
+end
+end)
+spawn(function()
+while wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+game.Players.LocalPlayer.Character.Torso.Velocity = Vector3.new(0,0,0)
+end
+end)
+while wait() do
+if(_G.farm2==true and _G.globalTarget~=nil and _G.globalTarget:FindFirstChild("Head") and Player.Character:FindFirstChildOfClass("Tool"))then
+local target = _G.globalTarget
+game.ReplicatedStorage.Gun:FireServer({["Normal"] = Vector3.new(0, 0, 0), ["Direction"] = target.Head.Position, ["Name"] = Player.Character:FindFirstChildOfClass("Tool").Name, ["Hit"] = target.Head, ["Origin"] = target.Head.Position, ["Pos"] = target.Head.Position,})
+wait()
+end
+end
+end)
+
+tab1:CreateButton("Auto Farm 3", function()
+print(value)
+local groundDistance = 12
+local Player = game:GetService("Players").LocalPlayer
+local function getNearest()
+local nearest, dist = nil, 99999
+for _,v in pairs(game.Workspace.BossFolder:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+for _,v in pairs(game.Workspace.enemies:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+return nearest
+end
+_G.farm2 = true
+Player.Chatted:Connect(function(m)
+if(m==";autofarm false")then
+_G.farm2 = false
+elseif(m==";autofarm true")then
+_G.farm2 = true
+end
+end)
+_G.globalTarget = nil
+game:GetService("RunService").RenderStepped:Connect(function()
+if(_G.farm2==true)then
+local target = getNearest()
+if(target~=nil)then
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, target.Head.Position)
+Player.Character.HumanoidRootPart.CFrame = (target.HumanoidRootPart.CFrame * CFrame.new(0, groundDistance, 9))
+_G.globalTarget = target
+end
+end
+end)
+spawn(function()
+while wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+game.Players.LocalPlayer.Character.Torso.Velocity = Vector3.new(0,0,0)
+end
+end)
+while wait() do
+if(_G.farm2==true and _G.globalTarget~=nil and _G.globalTarget:FindFirstChild("Head") and Player.Character:FindFirstChildOfClass("Tool"))then
+local target = _G.globalTarget
+game.ReplicatedStorage.Gun:FireServer({["Normal"] = Vector3.new(0, 0, 0), ["Direction"] = target.Head.Position, ["Name"] = Player.Character:FindFirstChildOfClass("Tool").Name, ["Hit"] = target.Head, ["Origin"] = target.Head.Position, ["Pos"] = target.Head.Position,})
+wait()
+end
+end
+end)
+
+tab1:CreateButton("Auto Farm 4", function()
+print(value)
+local groundDistance = 10.5
+local Player = game:GetService("Players").LocalPlayer
+local function getNearest()
+local nearest, dist = nil, 99999
+for _,v in pairs(game.Workspace.BossFolder:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+for _,v in pairs(game.Workspace.enemies:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+return nearest
+end
+_G.farm2 = true
+Player.Chatted:Connect(function(m)
+if(m==";autofarm false")then
+_G.farm2 = false
+elseif(m==";autofarm true")then
+_G.farm2 = true
+end
+end)
+_G.globalTarget = nil
+game:GetService("RunService").RenderStepped:Connect(function()
+if(_G.farm2==true)then
+local target = getNearest()
+if(target~=nil)then
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, target.Head.Position)
+Player.Character.HumanoidRootPart.CFrame = (target.HumanoidRootPart.CFrame * CFrame.new(0, groundDistance, 9))
+_G.globalTarget = target
+end
+end
+end)
+spawn(function()
+while wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+game.Players.LocalPlayer.Character.Torso.Velocity = Vector3.new(0,0,0)
+end
+end)
+while wait() do
+if(_G.farm2==true and _G.globalTarget~=nil and _G.globalTarget:FindFirstChild("Head") and Player.Character:FindFirstChildOfClass("Tool"))then
+local target = _G.globalTarget
+game.ReplicatedStorage.Gun:FireServer({["Normal"] = Vector3.new(0, 0, 0), ["Direction"] = target.Head.Position, ["Name"] = Player.Character:FindFirstChildOfClass("Tool").Name, ["Hit"] = target.Head, ["Origin"] = target.Head.Position, ["Pos"] = target.Head.Position,})
+wait()
+end
+end
+end)
+
+tab1:CreateButton("Auto Farm 5", function()
+print(value)
+local groundDistance = 8
+local Player = game:GetService("Players").LocalPlayer
+local function getNearest()
+local nearest, dist = nil, 99999
+for _,v in pairs(game.Workspace.BossFolder:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+for _,v in pairs(game.Workspace.enemies:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+return nearest
+end
+_G.farm2 = true
+Player.Chatted:Connect(function(m)
+if(m==";autofarm false")then
+_G.farm2 = false
+elseif(m==";autofarm true")then
+_G.farm2 = true
+end
+end)
+_G.globalTarget = nil
+game:GetService("RunService").RenderStepped:Connect(function()
+if(_G.farm2==true)then
+local target = getNearest()
+if(target~=nil)then
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, target.Head.Position)
+Player.Character.HumanoidRootPart.CFrame = (target.HumanoidRootPart.CFrame * CFrame.new(0, groundDistance, 9))
+_G.globalTarget = target
+end
+end
+end)
+spawn(function()
+while wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+game.Players.LocalPlayer.Character.Torso.Velocity = Vector3.new(0,0,0)
+end
+end)
+while wait() do
+if(_G.farm2==true and _G.globalTarget~=nil and _G.globalTarget:FindFirstChild("Head") and Player.Character:FindFirstChildOfClass("Tool"))then
+local target = _G.globalTarget
+game.ReplicatedStorage.Gun:FireServer({["Normal"] = Vector3.new(0, 0, 0), ["Direction"] = target.Head.Position, ["Name"] = Player.Character:FindFirstChildOfClass("Tool").Name, ["Hit"] = target.Head, ["Origin"] = target.Head.Position, ["Pos"] = target.Head.Position,})
+wait()
+end
+end
+end)
+
+tab1:CreateButton("Auto Gun Gui", function()
+  print(value)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Auto%20Equip%20Tool'))()
+end)
+
+tab2:CreateButton("HitBox", function()
+  print(value)
+_G.HeadSize = 14
+local enemies = workspace.enemies
+while wait() do
+  for _,v in next, enemies:GetChildren() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+       v.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+     v.HumanoidRootPart.Material = "Neon"
+       v.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+       v.HumanoidRootPart.Transparency = 0.4
+       v.HumanoidRootPart.CanCollide = false
+end)
+end
+  end
+end
+end)
+
+tab2:CreateButton("HitBox 2", function()
+  print(value)
+_G.HeadSize = 20
+local enemies = workspace.enemies
+while wait() do
+  for _,v in next, enemies:GetChildren() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+       v.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+     v.HumanoidRootPart.Material = "Neon"
+       v.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+       v.HumanoidRootPart.Transparency = 0.4
+       v.HumanoidRootPart.CanCollide = false
+end)
+end
+  end
+end
+end)
+
+tab2:CreateButton("Reset Hitbox", function()
+  print(value)
+_G.HeadSize = 1
+local enemies = workspace.enemies
+while wait() do
+  for _,v in next, enemies:GetChildren() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+       v.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+     v.HumanoidRootPart.Material = "Neon"
+       v.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+       v.HumanoidRootPart.Transparency = 0.4
+       v.HumanoidRootPart.CanCollide = false
+end)
+end
+  end
+end
+end)
+
+tab2:CreateTextbox("Change Walkspeed", function(a)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a
+print(a)
+end)
+
+tab2:CreateTextbox("Change Jumppower", function(a)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = a
+print(a)
+end)
+
+tab2:CreateButton("(Fixing script)", function()
+  print(value)
+_G.infinjump = not _G.infinjump
+
+if _G.infinJumpStarted == nil then
+  --Ensures this only runs once to save resources
+  _G.infinJumpStarted = true
+
+  --Notifies readiness
+  game.StarterGui:SetCore("SendNotification", {Title="WeAreDevs.net"; Text="The WeAreDevs Infinite Jump exploit is ready!"; Duration=5;})
+
+  --The actual infinite jump
+  local plr = game:GetService('Players').LocalPlayer
+  local m = plr:GetMouse()
+  m.KeyDown:connect(function(k)
+    if _G.infinjump then
+      if k:byte() == 32 then
+      humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+      humanoid:ChangeState('Jumping')
+      wait()
+      humanoid:ChangeState('Seated')
+      end
+    end
+  end)
+end
+end)
+
+tab2:CreateButton("Big head zombie 1", function()
+    Size_of_head = 10
+    while wait() do
+        if game.Workspace.enemies:FindFirstChild("Zombie") then
+            for i,v in pairs(game.Workspace.enemies:GetChildren()) do
+                wait()
+                if v:FindFirstChild("Head") then
+                    v.Head.CanCollide = false
+                    v.Head.Size = Vector3.new(Size_of_head,Size_of_head,Size_of_head)
+                    v.Head.CFrame = v.Torso.CFrame * CFrame.new(0,Size_of_head/2,0)
+                end
+            end
+        end
+    end
+end)
+
+tab2:CreateButton("Zombie Head 2", function()
+    Size_of_head = 5
+    while wait() do
+        if game.Workspace.enemies:FindFirstChild("Zombie") then
+            for i,v in pairs(game.Workspace.enemies:GetChildren()) do
+                wait()
+                if v:FindFirstChild("Head") then
+                    v.Head.CanCollide = false
+                    v.Head.Size = Vector3.new(Size_of_head,Size_of_head,Size_of_head)
+                    v.Head.CFrame = v.Torso.CFrame * CFrame.new(0,Size_of_head/2,0)
+                end
+            end
+        end
+    end
+end)
+
+tab2:CreateButton("Zombie Head Reset", function()
+    Size_of_head = 1
+    while wait() do
+        if game.Workspace.enemies:FindFirstChild("Zombie") then
+            for i,v in pairs(game.Workspace.enemies:GetChildren()) do
+                wait()
+                if v:FindFirstChild("Head") then
+                    v.Head.CanCollide = false
+                    v.Head.Size = Vector3.new(Size_of_head,Size_of_head,Size_of_head)
+                    v.Head.CFrame = v.Torso.CFrame * CFrame.new(0,Size_of_head/2,0)
+                end
+            end
+        end
+    end
+end)
+
+tab2:CreateButton("Turn Zombie (lobby)", function()
+    local args = {
+      [1] = "request_become_zombie"
+    }
+
+    game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationE:FireServer(unpack(args))
+end)
+
+tab8:CreateButton("Auto Farm (2)", function()
+print(value)
+local groundDistance = 18
+local Player = game:GetService("Players").LocalPlayer
+local function getNearest()
+local nearest, dist = nil, 99999
+for _,v in pairs(game.Workspace.BossFolder:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+for _,v in pairs(game.Workspace.enemies:GetChildren()) do
+if(v:FindFirstChild("Head")~=nil)then
+local m =(Player.Character.Head.Position-v.Head.Position).magnitude
+if(m<dist)then
+dist = m
+nearest = v
+end
+end
+end
+return nearest
+end
+_G.farm2 = true
+Player.Chatted:Connect(function(m)
+if(m==";autofarm false")then
+_G.farm2 = false
+elseif(m==";autofarm true")then
+_G.farm2 = true
+end
+end)
+_G.globalTarget = nil
+game:GetService("RunService").RenderStepped:Connect(function()
+if(_G.farm2==true)then
+local target = getNearest()
+if(target~=nil)then
+game:GetService("Workspace").CurrentCamera.CFrame = CFrame.new(game:GetService("Workspace").CurrentCamera.CFrame.p, target.Head.Position)
+Player.Character.HumanoidRootPart.CFrame = (target.HumanoidRootPart.CFrame * CFrame.new(0, groundDistance, 9))
+_G.globalTarget = target
+end
+end
+end)
+spawn(function()
+while wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+game.Players.LocalPlayer.Character.Torso.Velocity = Vector3.new(0,0,0)
+end
+end)
+while wait() do
+if(_G.farm2==true and _G.globalTarget~=nil and _G.globalTarget:FindFirstChild("Head") and Player.Character:FindFirstChildOfClass("Tool"))then
+local target = _G.globalTarget
+game.ReplicatedStorage.Gun:FireServer({["Normal"] = Vector3.new(0, 0, 0), ["Direction"] = target.Head.Position, ["Name"] = Player.Character:FindFirstChildOfClass("Tool").Name, ["Hit"] = target.Head, ["Origin"] = target.Head.Position, ["Pos"] = target.Head.Position,})
+wait()
+end
+end
+end)
+
+tab8:CreateButton("HitBox (click)", function()
+  print(value)
+_G.HeadSize = 23
+local enemies = workspace.enemies
+while wait() do
+  for _,v in next, enemies:GetChildren() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+       v.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+     v.HumanoidRootPart.Material = "Neon"
+       v.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+       v.HumanoidRootPart.Transparency = 0.4
+       v.HumanoidRootPart.CanCollide = false
+end)
+end
+  end
+end
+end)
+
+tab3:CreateButton("Anti kick", function()
+print(value)
+wait(0.5)local ba=Instance.new("ScreenGui")
+local ca=Instance.new("TextLabel")local da=Instance.new("Frame")
+local _b=Instance.new("TextLabel")local ab=Instance.new("TextLabel")ba.Parent=game.CoreGui
+ba.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;ca.Parent=ba;ca.Active=true
+ca.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)ca.Draggable=true
+ca.Position=UDim2.new(0.698610067,0,0.098096624,0)ca.Size=UDim2.new(0,304,0,52)
+ca.Font=Enum.Font.SourceSansSemibold;ca.Text="Anti Afk Kick Script"ca.TextColor3=Color3.new(0,1,1)
+ca.TextSize=22;da.Parent=ca
+da.BackgroundColor3=Color3.new(0.196078,0.196078,0.196078)da.Position=UDim2.new(0,0,1.0192306,0)
+da.Size=UDim2.new(0,304,0,107)_b.Parent=da
+_b.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)_b.Position=UDim2.new(0,0,0.800455689,0)
+_b.Size=UDim2.new(0,304,0,21)_b.Font=Enum.Font.Arial;_b.Text="by dqtixz"
+_b.TextColor3=Color3.new(1,1,1)_b.TextSize=20;ab.Parent=da
+ab.BackgroundColor3=Color3.new(0.176471,0.176471,0.176471)ab.Position=UDim2.new(0,0,0.158377379,0)
+ab.Size=UDim2.new(0,304,0,44)ab.Font=Enum.Font.ArialBold;ab.Text="Status: Active"
+ab.TextColor3=Color3.new(1,1,1)ab.TextSize=20;local bb=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+bb:CaptureController()bb:ClickButton2(Vector2.new())
+ab.Text="Error Roblox Tentou Kick Você !?"wait(2)ab.Text="Script Re-Ativo"end)
+end)
+
+tab3:CreateButton("Noclip", function()
+print(value)
+local Workspace = game:GetService("Workspace")
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+local Noclip = Instance.new("ScreenGui")
+local BG = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Toggle = Instance.new("TextButton")
+local StatusPF = Instance.new("TextLabel")
+local Status = Instance.new("TextLabel")
+local Credit = Instance.new("TextLabel")
+local Plr = Players.LocalPlayer
+local Clipon = false
+
+Noclip.Name = "Noclip"
+Noclip.Parent = game.CoreGui
+
+BG.Name = "BG"
+BG.Parent = Noclip
+BG.BackgroundColor3 = Color3.new(0.0980392, 0.0980392, 0.0980392)
+BG.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+BG.BorderSizePixel = 2
+BG.Position = UDim2.new(0.149479166, 0, 0.82087779, 0)
+BG.Size = UDim2.new(0, 210, 0, 127)
+BG.Active = true
+BG.Draggable = true
+
+Title.Name = "Title"
+Title.Parent = BG
+Title.BackgroundColor3 = Color3.new(0.266667, 0.00392157, 0.627451)
+Title.BorderColor3 = Color3.new(0.180392, 0, 0.431373)
+Title.BorderSizePixel = 2
+Title.Size = UDim2.new(0, 210, 0, 33)
+Title.Font = Enum.Font.Highway
+Title.Text = "Noclip"
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.FontSize = Enum.FontSize.Size32
+Title.TextSize = 30
+Title.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
+Title.TextStrokeTransparency = 0
+
+Toggle.Parent = BG
+Toggle.BackgroundColor3 = Color3.new(0.266667, 0.00392157, 0.627451)
+Toggle.BorderColor3 = Color3.new(0.180392, 0, 0.431373)
+Toggle.BorderSizePixel = 2
+Toggle.Position = UDim2.new(0.152380958, 0, 0.374192119, 0)
+Toggle.Size = UDim2.new(0, 146, 0, 36)
+Toggle.Font = Enum.Font.Highway
+Toggle.FontSize = Enum.FontSize.Size28
+Toggle.Text = "Toggle"
+Toggle.TextColor3 = Color3.new(1, 1, 1)
+Toggle.TextSize = 25
+Toggle.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
+Toggle.TextStrokeTransparency = 0
+
+StatusPF.Name = "StatusPF"
+StatusPF.Parent = BG
+StatusPF.BackgroundColor3 = Color3.new(1, 1, 1)
+StatusPF.BackgroundTransparency = 1
+StatusPF.Position = UDim2.new(0.314285725, 0, 0.708661377, 0)
+StatusPF.Size = UDim2.new(0, 56, 0, 20)
+StatusPF.Font = Enum.Font.Highway
+StatusPF.FontSize = Enum.FontSize.Size24
+StatusPF.Text = "Status:"
+StatusPF.TextColor3 = Color3.new(1, 1, 1)
+StatusPF.TextSize = 20
+StatusPF.TextStrokeColor3 = Color3.new(0.333333, 0.333333, 0.333333)
+StatusPF.TextStrokeTransparency = 0
+StatusPF.TextWrapped = true
+
+Status.Name = "Status"
+Status.Parent = BG
+Status.BackgroundColor3 = Color3.new(1, 1, 1)
+Status.BackgroundTransparency = 1
+Status.Position = UDim2.new(0.580952346, 0, 0.708661377, 0)
+Status.Size = UDim2.new(0, 56, 0, 20)
+Status.Font = Enum.Font.Highway
+Status.FontSize = Enum.FontSize.Size14
+Status.Text = "OFF"
+Status.TextColor3 = Color3.new(0.666667, 0, 0)
+Status.TextScaled = true
+Status.TextSize = 14
+Status.TextStrokeColor3 = Color3.new(0.180392, 0, 0.431373)
+Status.TextWrapped = true
+Status.TextXAlignment = Enum.TextXAlignment.Left
+
+Credit.Name = "Credits"
+Credit.Parent = BG
+Credit.BackgroundColor3 = Color3.new(1, 1, 1)
+Credit.BackgroundTransparency = 1
+Credit.Position = UDim2.new(0.195238099, 0, 0.866141737, 0)
+Credit.Size = UDim2.new(0, 128, 0, 17)
+Credit.Font = Enum.Font.SourceSans
+Credit.FontSize = Enum.FontSize.Size18
+Credit.Text = "by dqtixz"
+Credit.TextColor3 = Color3.new(1, 1, 1)
+Credit.TextSize = 16
+Credit.TextStrokeColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+Credit.TextStrokeTransparency = 0
+Credit.TextWrapped = true
+
+Toggle.MouseButton1Click:connect(function()
+    if Status.Text == "off" then
+        Clipon = true
+        Status.Text = "on"
+        Status.TextColor3 = Color3.new(0,185,0)
+        Stepped = game:GetService("RunService").Stepped:Connect(function()
+            if not Clipon == false then
+                for a, b in pairs(Workspace:GetChildren()) do
+                if b.Name == Plr.Name then
+                for i, v in pairs(Workspace[Plr.Name]:GetChildren()) do
+                if v:IsA("BasePart") then
+                v.CanCollide = false
+                end end end end
+            else
+                Stepped:Disconnect()
+            end
+        end)
+    elseif Status.Text == "on" then
+        Clipon = false
+        Status.Text = "off"
+        Status.TextColor3 = Color3.new(170,0,0)
+    end
+end)
+end)
+
+tab6:CreateButton("Murderers vs sherrife btazil", function()
+print(value)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dqtixz/script-Murderers-VS-Sheriffs-Hub/main/Script%20Murderers%20VS%20Sheriffs%20Hub%20By%20Dqtixz"))();
+end)
+
+tab6:CreateButton("Rejoin", function()
+print(value)
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local Rejoin = coroutine.create(function()
+    local Success, ErrorMessage = pcall(function()
+        TeleportService:Teleport(game.PlaceId, LocalPlayer)
+    end)
+
+    if ErrorMessage and not Success then
+        warn(ErrorMessage)
+    end
+end)
+
+coroutine.resume(Rejoin)
+end)
+
+---Aviso / Ajuda---
+
+tab5:CreateWarning("Tutorial on How to Avoid Banning")
+tab5:CreateWarning("1 - Don't Keep Talking on Chat.")
+tab5:CreateWarning("2 - Server Other Region.")
+tab5:CreateWarning("3 - Don't Reply Any Player.")
+tab5:CreateWarning("4 - Don't Spam Chat.")
+tab5:CreateWarning("5 - Someone Calls You a Hack Change Server.")
+tab5:CreateWarning("6 - Server With Few People.")
+
+--- Creditos ---
+
+tab4:CreateWarning("1 - Projeto LKA - Scripts Hub Menu Brazil")
+tab4:CreateWarning("2 - Zombie Attack Script - 24/02/2024")
+tab4:CreateWarning("3 - By dqtixz")
+tab4:CreateWarning("4 - Last update - 20/02/2024")
+tab4:CreateWarning("New Add+")
+tab4:CreateWarning("Buy Box")
+tab4:CreateWarning("Script launched")
+tab4:CreateWarning("updates may take time")
+tab4:CreateWarning("My Phone Broke")
+
+--- Auto Farm Aviso --- 
+
+tab1:CreateWarning("1 - Use With Care")
+tab1:CreateWarning("2 - See (Auto Farm Help)")
+tab1:CreateWarning("3 - Use the Gun to Farm")
+tab1:CreateWarning("4 - If you die, you unequip your weapon")
+tab1:CreateWarning("5 - is in test auto equip weapon gui")
+tab1:CreateWarning("6 - Just Enter Weapon Name to auto equip active")
+
+--- Jogador / Combate --- 
+
+tab2:CreateWarning("1 - Attention !")
+tab2:CreateWarning("2 - Look (Warning)")
+tab2:CreateWarning("3 - To Avoid Banning !")
+
+--- Menu Hub Outros Jogos ---
+
+tab6:CreateWarning("1 - new updates coming soon")
+tab6:CreateWarning("2 - follow dqtixz roblox")
+
+--- Auto Farm Ajuda ---
+
+tab7:CreateWarning("1 - Use on Servers with Few People")
+tab7:CreateWarning("2 - Use in Server Vip")
+tab7:CreateWarning("3 - Join a Server Nobody Talks About")
+tab7:CreateWarning("4 - Between Server From Another Country")
+tab7:CreateWarning("5 - Auto Farm Click Below")
+tab7:CreateWarning("6 - Select Auto Farm Click")
+tab7:CreateWarning("7 - Hitbox + Farm 1.2 Fast Farm")
+tab7:CreateWarning("8 - This Will Increase Your Farming Speed")
+
+--- Auto Farm Click
+
+tab8:CreateWarning("1- See Auto Farm Help")
+tab8:CreateWarning("2 - For Your Help")
+
+--- Fechar Menu ---
+
+tab9:CreateButton("Buy Revolver", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Revolver"
+}
+    game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Uzi", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Uzi"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Shotgun", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Trench Shotgun"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Garand", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "M1 Garand"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Type 100", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Type 100"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy M16", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "M16"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Sniper", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Sniper"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Tactical Shotgun", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Tactical Shotgun"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Thompson", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Thompson"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Blaster", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Blaster"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Machine", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Machine Gun"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Cobra", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Cobra"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Cannon", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Fiery Cannon"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Toxic", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Toxic"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Retribution Ray", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Retribution Ray"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Scope Rifle", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Scope Rifle"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab9:CreateButton("Buy Space Gun", function()
+print(value)
+local args = {
+  [1] = "BuyItem_Cash",
+  [2] = "Space Gun"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab10:CreateButton("Auto buy box basic #1", function()
+print(value)
+local args = {
+    [1] = "unbox_box",
+    [2] = "Basic #1"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+
+tab10:CreateButton("Auto buy box basic #2", function()
+print(value)
+local args = {
+    [1] = "unbox_box",
+    [2] = "Basic #2"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab10:CreateButton("Auto buy box basic #3", function()
+print(value)
+local args = {
+    [1] = "unbox_box",
+    [2] = "Basic #3"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab10:CreateButton("Auto buy box basic Uncommon", function()
+print(value)
+local args = {
+    [1] = "unbox_box",
+    [2] = "Uncommon"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab10:CreateButton("Auto buy box basic Rare", function()
+print(value)
+local args = {
+    [1] = "unbox_box",
+    [2] = "Rare"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab10:CreateButton("Auto buy box basic Legendary", function()
+print(value)
+local args = {
+    [1] = "unbox_box",
+    [2] = "Legendary"
+}
+
+game:GetService("ReplicatedStorage").RemoteEventContainer.CommunicationF:InvokeServer(unpack(args))
+end)
+
+tab10:CreateWarning("Update Script !")
+
+tab11:CreateWarning("values gun") tab11:CreateWarning("Pistol 0$") tab11:CreateWarning("Revolver 250$") tab11:CreateWarning("Uzi 600$") tab11:CreateWarning("Trench Shotgun 950$") tab11:CreateWarning("M1 Garand 1250$") tab11:CreateWarning("Type 100 2000$") tab11:CreateWarning("M16 3000$") tab11:CreateWarning("Sniper 4000$") tab11:CreateWarning("Tactical Shotgun 5000$") tab11:CreateWarning("Thompson 7500$") tab11:CreateWarning("Blaster 8500$") tab11:CreateWarning("Machine Gun 9500$") tab11:CreateWarning("Cobra 12500$") tab11:CreateWarning("Fiery Cannon 15000$") tab11:CreateWarning("Toxic 17500$") tab11:CreateWarning("Platinum Gun 23000$") tab11:CreateWarning("Scope Rifle 24000$") tab11:CreateWarning("Space Gun 26000$") tab11:CreateWarning("Railgun 28000$") tab11:CreateWarning("Ghost 31000$") tab11:CreateWarning("Alien Rifle 35000$") tab11:CreateWarning("Ray Gun 38000$") tab11:CreateWarning("Annihilator 40000$") tab11:CreateWarning("Biohazard 43000$") tab11:CreateWarning("Venom 45000$") tab11:CreateWarning("Golden Pistol 50000$") tab11:CreateWarning("Rainbow Blaster 65000$") tab11:CreateWarning("Hex Spitter 80000$") tab11:CreateWarning("Beam Launcher 90000$") tab11:CreateWarning("Gatling Laser 100000$") tab11:CreateWarning("Tri Laser 150000$") tab11:CreateWarning("Techno Rifle 200000$") tab11:CreateWarning("Minigun 500000$")
+
+tab9:CreateWarning("need money for buy")
+tab9:CreateWarning("new guns others update future")
+
+tab12:CreateButton("Close Gui", function()
+  print(value)
+PabloLib:Close()
+end)
+
+tab12:CreateWarning("Report Giltch Error DC")
+tab12:CreateWarning("abbot 3355")
+tab12:CreateWarning("abbot#3355")
+tab12:CreateWarning("Script update for 1k views")
+
+--[[
+tab1:CreateButton("Auto Pegar Arma (Teste)", function()
+  print(value)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Auto%20Equip%20Tool'))()
+end)]]
